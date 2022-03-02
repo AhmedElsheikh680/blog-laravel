@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test/{id?}', function() {
-    return 'Hello World';
-})->name('ahmed.elsheikh');
+
+Route::namespace('Front')->group(function() {
+    //ALl Routes
+    Route::get('/users', [UserController::class, 'showAdminName']);
+});
