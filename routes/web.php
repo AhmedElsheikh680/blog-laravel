@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\UserController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('Front')->group(function() {
-    //ALl Routes
-    Route::get('/users', [UserController::class, 'showAdminName']);
-});
+//Route::namespace('Front')->group(function() {
+//    //ALl Routes
+//    Route::get('/users', [UserController::class, 'showAdminName']);
+//});
+
+//Route::group(['prefix' => 'users'], function() {
+//
+//    Route::get('/show', [Controller::class,'shows']);
+//})->middleware('auth');
+Route::group(['prefix' => 'users', 'middleware' => 'auth'], function() {
+
+    Route::get('/show', [Controller::class,'shows']);
+})->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
