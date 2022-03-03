@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 class SecondController extends Controller
 {
 
-    public function __construct() {
-        $this->middleware('auth')->except('showString3');
-    }
+//    public function __construct() {
+//        $this->middleware('auth')->except('showString3');
+//    }
 
     public function showString0() {
         return "Static Data 0";
