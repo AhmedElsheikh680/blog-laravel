@@ -1,0 +1,11 @@
+App ID
+381918170056963
+App secret
+
+3cee32e753143c2f117e98f0f7cda5ff
+
+
+
+===================
+offerRow{{$gym -> id}} 
+offerRow{{$city -> id}}

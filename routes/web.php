@@ -1,12 +1,25 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\SecondController;
 use App\Http\Controllers\NewsController;
 
-Route::resource('news', NewsController::class);
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/redirect/{service}', [SocialController::class,'redirect']);
+Route::get('/callback/{service}', [SocialController::class,'callback']);
+
+
+Route::group(['namespace'=> 'Front'], function() {
+    Route::get('/index', [UserController::class, 'getIndex']);
+});
+//Route::resource('news', NewsController::class);
 
 
 //Route::group(['namespace' => 'Admin'], function(){
@@ -44,6 +57,10 @@ Route::get('/', function () {
 //
 //    Route::get('/show', [Controller::class,'shows']);
 //});
+
+
+
+
 
 
 
